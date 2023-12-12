@@ -1,0 +1,36 @@
+.aboutHeading {
+  padding: 16px 0;
+  border-bottom: 1px solid #e9e6e6;
+  font-size: 24px;
+  margin: 40px 0 20px 0;
+}
+
+.aboutText {
+  margin-bottom: 20px;
+}
+
+.contactInput {
+  width: 100%;
+  padding: 11px 9px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+}
+
+.contactBtn {
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 11px 11px;
+  margin-bottom: 16px;
+  cursor: pointer;
+}
+
+.contactBtn:hover {
+  background-color: #ccc;
+}
+
+@media only screen and (max-width: 430px) {
+  .imageContainer {
+    width: 100%;
+  }
+}

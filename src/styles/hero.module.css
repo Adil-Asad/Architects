@@ -1,0 +1,46 @@
+.heroContainer {
+  position: relative;
+
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.heroLogo {
+  display: flex;
+  gap: 1rem;
+  position: absolute;
+  top: 46%;
+  left: 40%;
+  align-items: center;
+}
+
+.banner {
+  width: 100%;
+}
+.logo {
+  padding: 6px 16px;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: rgba(0, 0, 0, 0.719);
+  letter-spacing: 3.5px;
+  font-size: 36px;
+}
+
+.logoText {
+  color: white;
+  letter-spacing: 3.5px;
+  font-size: 36px;
+}
+
+@media only screen and (max-width: 430px) {
+  .logoText {
+    display: none;
+  }
+
+  .heroLogo {
+    position: absolute;
+    top: 41%;
+    left: 40%;
+    align-items: center;
+  }
+}

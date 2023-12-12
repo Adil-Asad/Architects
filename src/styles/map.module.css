@@ -1,0 +1,24 @@
+.heroContainer {
+  position: relative;
+
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.banner {
+  width: 100%;
+}
+
+@media only screen and (max-width: 430px) {
+  .logoText {
+    display: none;
+  }
+
+  .heroLogo {
+    position: absolute;
+    top: 41%;
+    left: 40%;
+    align-items: center;
+  }
+}
