@@ -76,3 +76,29 @@
     display: none;
   }
 }
+
+@media only screen and (max-width: 992px) {
+  .navContainer {
+    height: 55px;
+    padding: 0 1rem;
+  }
+
+  .navLogo {
+    display: flex;
+    gap: 6.5px;
+    padding: 9px 17px;
+  }
+  .navLogo:hover {
+    background-color: #ccc;
+  }
+
+  .logo {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 3.5px;
+  }
+  .logoText {
+    font-size: 14px;
+    letter-spacing: 5px;
+  }
+}
