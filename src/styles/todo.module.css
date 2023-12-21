@@ -1,0 +1,44 @@
+.mainContainer {
+  background-color: rgb(42, 139, 163);
+  width: 100%;
+  height: 100vh;
+  display: flex;
+
+  justify-content: center;
+}
+
+.childContainer {
+  margin-top: 2rem;
+  max-width: 40rem;
+}
+.containerHeading {
+  text-align: center;
+  font-size: x-large;
+}
+.addItem {
+  position: relative;
+  max-width: 40rem;
+}
+.inputItem {
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  max-width: 40rem;
+}
+.addBtn {
+  position: absolute;
+  right: 5px;
+  top: 9px;
+}
+
+/* .editBtn {
+} */
+.eachItem {
+  display: flex;
+  justify-content: space-between;
+  background-color: aliceblue;
+  margin-top: 10px;
+  border-radius: 10px;
+  align-items: center;
+  padding: 10px;
+}
