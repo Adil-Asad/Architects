@@ -9,6 +9,7 @@
 
 .childContainer {
   margin-top: 2rem;
+  min-width: 40rem;
   max-width: 40rem;
 }
 .containerHeading {
@@ -17,12 +18,14 @@
 }
 .addItem {
   position: relative;
+  min-width: 40rem;
   max-width: 40rem;
 }
 .inputItem {
   border: none;
   border-radius: 10px;
   padding: 10px;
+  min-width: 40rem;
   max-width: 40rem;
 }
 .addBtn {
@@ -35,10 +38,16 @@
 } */
 .eachItem {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   background-color: aliceblue;
   margin-top: 10px;
   border-radius: 10px;
   align-items: center;
   padding: 10px;
+}
+.textWrap{
+  display: flex;
+  flex-wrap: wrap;
+
 }

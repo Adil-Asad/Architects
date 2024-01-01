@@ -5,7 +5,7 @@ import { MdDeleteForever } from "react-icons/md";
 import { FaRegEdit } from "react-icons/fa";
 
 function Todo() {
-  const [inputData, setInputData] = useState("write");
+  const [inputData, setInputData] = useState("");
   const [items, setItems] = useState([]);
   const [isToggleBtn, setIsToggleBtn] = useState(true);
   const [isEditBtn, setIsEditBtn] = useState(null);
@@ -19,6 +19,9 @@ function Todo() {
       setInputData("");
     }
   }
+
+
+
 
   // delete items function
   function delItem(id) {
@@ -43,7 +46,19 @@ function Todo() {
     const newItems = [...items];
     newItems[isEditBtn] = inputData;
     setItems(newItems)
+    setIsToggleBtn(true);
+    setInputData("")
   }
+
+  //  enter key logic  
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      {isToggleBtn ? addItem() : updateItem()}
+    }
+  };
+  const currentDate = new Date();
+  const currentTime = currentDate.toLocaleTimeString(); 
+
 
   return (
     <div className={styles.mainContainer}>
@@ -55,6 +70,7 @@ function Todo() {
             type="text"
             value={inputData}
             onChange={(e) => setInputData(e.target.value)}
+            onKeyDown={handleKeyDown}
             placeholder="Add Items"
           />
           {isToggleBtn ? (
@@ -70,7 +86,12 @@ function Todo() {
           {items.map((item, ind) => {
             return (
               <div className={styles.eachItem} key={ind}>
+                <div className={styles.textWrap}>
                 <p>{item}</p>
+                </div>
+                
+               
+                <small>{currentTime}</small>
                 <div>
                   <FaRegEdit
                     className={styles.editBtn}
