@@ -8,9 +8,11 @@
 }
 
 .childContainer {
-  margin-top: 2rem;
-  min-width: 40rem;
-  max-width: 40rem;
+  margin: 1rem 0;
+  background: rgb(195, 195, 195);
+  border-radius: 5px;
+  box-shadow: 0 1 5 1 silver;
+  padding: 30px;
 }
 .containerHeading {
   text-align: center;
@@ -22,6 +24,7 @@
   max-width: 40rem;
 }
 .inputItem {
+  height: 50px;
   border: none;
   border-radius: 10px;
   padding: 10px;
@@ -30,8 +33,20 @@
 }
 .addBtn {
   position: absolute;
-  right: 5px;
-  top: 9px;
+    right: 5px;
+    top: 9px;
+    font-size: 32px;
+    background: red;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.editBtn{
+  font-size: 20px;
+    cursor: pointer;
+}
+.delBtn{
+  font-size: 25px;
+    cursor: pointer;
 }
 
 /* .editBtn {
@@ -39,6 +54,8 @@
 .eachItem {
   display: flex;
   flex-wrap: wrap;
+  min-width: 40rem;
+  max-width: 40rem;
   justify-content: space-between;
   background-color: aliceblue;
   margin-top: 10px;
@@ -49,5 +66,8 @@
 .textWrap{
   display: flex;
   flex-wrap: wrap;
-
+}
+.small {
+    display: block;
+    width: 90%;
 }

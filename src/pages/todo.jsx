@@ -87,12 +87,10 @@ function Todo() {
             return (
               <div className={styles.eachItem} key={ind}>
                 <div className={styles.textWrap}>
-                <p>{item}</p>
+                    <p>{item}</p>
                 </div>
-                
-               
-                <small>{currentTime}</small>
-                <div>
+                <small className={styles.small}>{currentTime}</small>
+                <div className={styles.line}>
                   <FaRegEdit
                     className={styles.editBtn}
                     onClick={() => editItem(ind)}
