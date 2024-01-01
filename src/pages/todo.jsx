@@ -5,10 +5,11 @@ import { MdDeleteForever } from "react-icons/md";
 import { FaRegEdit } from "react-icons/fa";
 
 function Todo() {
-  const [inputData, setInputData] = useState("");
+  const [inputData, setInputData] = useState("write");
   const [items, setItems] = useState([]);
   const [isToggleBtn, setIsToggleBtn] = useState(true);
   const [isEditBtn, setIsEditBtn] = useState(null);
+
   // add items function
   function addItem() {
     if (inputData === "") {
@@ -38,6 +39,12 @@ function Todo() {
     setIsEditBtn(id);
   }
 
+  function updateItem() {
+    const newItems = [...items];
+    newItems[isEditBtn] = inputData;
+    setItems(newItems)
+  }
+
   return (
     <div className={styles.mainContainer}>
       <div className={styles.childContainer}>
@@ -55,7 +62,7 @@ function Todo() {
           ) : (
             <FaRegEdit
               className={styles.editBtn}
-              onClick={() => editItem(ind)}
+              onClick={() => updateItem()}
             />
           )}
         </div>
