@@ -71,12 +71,12 @@ function Todo() {
   // const currentTime = currentDate.toLocaleTimeString();
 
   return (
-    <div className={styles.mainContainer}>
-      <div className={styles.childContainer}>
-        <p className={styles.containerHeading}>Todos</p>
-        <div className={styles.addItem}>
+    <div className={styles.container}>
+      <div className={styles.container__child}>
+        <p className={styles.container__heading}>Todos</p>
+        <div className={styles.item__add}>
           <textarea
-            className={styles.inputItem}
+            className={styles.item__input}
             type="text"
             value={inputData}
             onChange={(e) => setInputData(e.target.value)}
@@ -84,10 +84,10 @@ function Todo() {
             placeholder="Add Items"
           />
           {isToggleBtn ? (
-            <CiCirclePlus className={styles.addBtn} onClick={addItem} />
+            <CiCirclePlus className={styles.btn__add} onClick={addItem} />
           ) : (
             <FaRegEdit
-              className={styles.updateBtn}
+              className={styles.btn__update}
               onClick={() => updateItem()}
             />
           )}
@@ -96,23 +96,23 @@ function Todo() {
           {items.map((item, ind) => {
             return (
               <>
-                <div className={styles.eachItem} key={ind}>
-                  <div className={styles.textWrap}>
+                <div className={styles.item__all} key={ind}>
+                  <div className={styles.text__wrap}>
                     <p>{item}</p>
                   </div>
 
-                  <div className={styles.btnGroup}>
+                  <div className={styles.btn__group}>
                     <FaRegEdit
-                      className={styles.editBtn}
+                      className={styles.btn__edit}
                       onClick={() => editItem(ind)}
                     />
                     <MdDeleteForever
-                      className={styles.delBtn}
+                      className={styles.btn__del}
                       onClick={() => delItem(ind)}
                     />
                   </div>
                 </div>
-                <div className={styles.itemBox}>
+                <div className={styles.item__box}>
                   {/* <small className={styles.small}>{currentTime}</small> */}
                 </div>
               </>
