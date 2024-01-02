@@ -12,16 +12,17 @@ function Todo() {
 
   // add items function
   function addItem() {
-    if (inputData === "") {
+    // e.stopPropagation();
+    if (inputData.trim() === "") {
       alert("Please enter the data first!");
     } else {
-      setItems([...items, inputData]);
+      const currentDate = new Date();
+      const currentTime = currentDate.toLocaleTimeString();
+      const newItem = `${inputData} - ${currentTime}`;
+      setItems([...items, newItem]);
       setInputData("");
     }
   }
-
-
-
 
   // delete items function
   function delItem(id) {
@@ -44,28 +45,37 @@ function Todo() {
 
   function updateItem() {
     const newItems = [...items];
-    newItems[isEditBtn] = inputData;
-    setItems(newItems)
+    const currentDate = new Date();
+    const currentTime = currentDate.toLocaleTimeString();
+    newItems[isEditBtn] = `${inputData} - ${currentTime}`;
+    setItems(newItems);
     setIsToggleBtn(true);
-    setInputData("")
+    setInputData("");
+
+    // const newItems = [...items];
+    // newItems[isEditBtn] = inputData;
+    // setItems(newItems);
+    // setIsToggleBtn(true);
+    // setInputData("");
   }
 
-  //  enter key logic  
+  //  enter key logic
   const handleKeyDown = (e) => {
-    if (e.key === 'Enter') {
-      {isToggleBtn ? addItem() : updateItem()}
+    if (e.key === "Enter") {
+      {
+        isToggleBtn ? addItem() : updateItem();
+      }
     }
   };
-  const currentDate = new Date();
-  const currentTime = currentDate.toLocaleTimeString(); 
-
+  // const currentDate = new Date();
+  // const currentTime = currentDate.toLocaleTimeString();
 
   return (
     <div className={styles.mainContainer}>
       <div className={styles.childContainer}>
         <p className={styles.containerHeading}>Todos</p>
         <div className={styles.addItem}>
-          <input
+          <textarea
             className={styles.inputItem}
             type="text"
             value={inputData}
@@ -77,7 +87,7 @@ function Todo() {
             <CiCirclePlus className={styles.addBtn} onClick={addItem} />
           ) : (
             <FaRegEdit
-              className={styles.editBtn}
+              className={styles.updateBtn}
               onClick={() => updateItem()}
             />
           )}
@@ -85,22 +95,27 @@ function Todo() {
         <div className={styles.showItem}>
           {items.map((item, ind) => {
             return (
-              <div className={styles.eachItem} key={ind}>
-                <div className={styles.textWrap}>
+              <>
+                <div className={styles.eachItem} key={ind}>
+                  <div className={styles.textWrap}>
                     <p>{item}</p>
+                  </div>
+
+                  <div className={styles.btnGroup}>
+                    <FaRegEdit
+                      className={styles.editBtn}
+                      onClick={() => editItem(ind)}
+                    />
+                    <MdDeleteForever
+                      className={styles.delBtn}
+                      onClick={() => delItem(ind)}
+                    />
+                  </div>
                 </div>
-                <small className={styles.small}>{currentTime}</small>
-                <div className={styles.line}>
-                  <FaRegEdit
-                    className={styles.editBtn}
-                    onClick={() => editItem(ind)}
-                  />
-                  <MdDeleteForever
-                    className={styles.delBtn}
-                    onClick={() => delItem(ind)}
-                  />
+                <div className={styles.itemBox}>
+                  {/* <small className={styles.small}>{currentTime}</small> */}
                 </div>
-              </div>
+              </>
             );
           })}
         </div>

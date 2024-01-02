@@ -10,7 +10,7 @@
 .childContainer {
   margin: 1rem 0;
   background: rgb(195, 195, 195);
-  border-radius: 5px;
+  /* border-radius: 5px; */
   box-shadow: 0 1 5 1 silver;
   padding: 30px;
 }
@@ -24,50 +24,80 @@
   max-width: 40rem;
 }
 .inputItem {
-  height: 50px;
+  height: 4.1rem;
   border: none;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   padding: 10px;
-  min-width: 40rem;
+  min-width: 35rem;
   max-width: 40rem;
 }
 .addBtn {
   position: absolute;
-    right: 5px;
-    top: 9px;
-    font-size: 32px;
-    background: red;
-    border-radius: 20px;
-    cursor: pointer;
-}
-.editBtn{
-  font-size: 20px;
-    cursor: pointer;
-}
-.delBtn{
-  font-size: 25px;
-    cursor: pointer;
+  right: 0px;
+  top: 1px;
+  font-size: 59px;
+  background: rgb(78, 169, 9);
+  padding: 5px;
+  /* border-radius: 20px; */
+  cursor: pointer;
 }
 
-/* .editBtn {
-} */
+.updateBtn {
+  position: absolute;
+  right: 0px;
+  top: 1px;
+  font-size: 59px;
+  background: rgb(0, 187, 255);
+  padding: 5px;
+  /* border-radius: 20px; */
+  cursor: pointer;
+}
+
+.btnGroup {
+  position: relative;
+  display: flex;
+}
+.editBtn {
+  position: absolute;
+  right: 52px;
+  top: -9px;
+  font-size: 59px;
+  background: rgb(0, 187, 255);
+  padding: 15px;
+  /* border-radius: 20px; */
+  cursor: pointer;
+}
+.delBtn {
+  position: absolute;
+  right: -8px;
+  top: -9px;
+  font-size: 59px;
+  background: rgb(255, 0, 60);
+  padding: 15px;
+  /* border-radius: 20px; */
+  cursor: pointer;
+}
+
 .eachItem {
   display: flex;
-  flex-wrap: wrap;
+  min-height: 4.1rem;
+  justify-content: space-between;
   min-width: 40rem;
   max-width: 40rem;
-  justify-content: space-between;
   background-color: aliceblue;
   margin-top: 10px;
-  border-radius: 10px;
-  align-items: center;
+  /* border-radius: 10px; */
   padding: 10px;
 }
-.textWrap{
+.itemBox {
+  display: flex;
+}
+.textWrap {
   display: flex;
   flex-wrap: wrap;
+  max-width: 31rem;
 }
 .small {
-    display: block;
-    width: 90%;
+  display: block;
+  width: 90%;
 }
