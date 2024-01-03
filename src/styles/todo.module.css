@@ -96,16 +96,21 @@
   border-radius: 5px;
   padding: 10px;
 }
-.item__box {
-  display: flex;
-}
+
 .text__wrap {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   max-width: 31rem;
 }
-.text__color {
+.item__time {
+  font-size: 11px;
+}
+.error__color {
   color: red;
+}
+.item__box {
+  display: flex;
 }
 .item__clear {
   display: flex;

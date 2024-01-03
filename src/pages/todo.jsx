@@ -19,7 +19,7 @@ function Todo() {
       const currentDate = new Date();
       const currentTime = currentDate.toLocaleTimeString();
       const newItem = `${inputData} - ${currentTime}`;
-      setItems([...items, newItem]);
+      setItems([newItem, ...items]);
       setInputData("");
       setIsMsg(false);
     }
@@ -94,17 +94,19 @@ function Todo() {
           )}
         </div>
         {isMsg ? (
-          <p className={styles.text__color}>Please Enter Some Text!</p>
+          <p className={styles.error__color}>Please Enter Some Text!</p>
         ) : (
           ""
         )}
         <div className={styles.showItem}>
           {items.map((item, ind) => {
+            const [content, time] = item.split("-").map((part) => part.trim());
             return (
               <>
                 <div className={styles.item__all} key={ind}>
                   <div className={styles.text__wrap}>
-                    <p>{item}</p>
+                    <p>{content}</p>
+                    <p className={styles.item__time}>{time}</p>
                   </div>
 
                   <div className={styles.btn__group}>
