@@ -1,5 +1,5 @@
 .container {
-  background-color: rgb(42, 139, 163);
+  background-image: linear-gradient(#67e5cc, #4a7fe6);
   width: 100%;
   height: 100vh;
   display: flex;
@@ -9,14 +9,15 @@
 
 .container__child {
   margin: 1rem 0;
-  background: rgb(195, 195, 195);
-  /* border-radius: 5px; */
+  background: #ffffff;
+  border-radius: 5px;
   box-shadow: 0 1 5 1 silver;
   padding: 30px;
 }
 .container__heading {
-  text-align: center;
   font-size: x-large;
+  font-weight: 700;
+  margin-bottom: 20px;
 }
 .item__add {
   position: relative;
@@ -24,9 +25,10 @@
   max-width: 40rem;
 }
 .item__input {
+  border: 1px solid rgb(231, 231, 231);
   height: 4.1rem;
-  border: none;
-  /* border-radius: 10px; */
+
+  border-radius: 5px;
   padding: 10px;
   min-width: 35rem;
   max-width: 40rem;
@@ -35,10 +37,11 @@
   position: absolute;
   right: 0px;
   top: 1px;
-  font-size: 59px;
-  background: rgb(78, 169, 9);
-  padding: 5px;
-  /* border-radius: 20px; */
+  color: white;
+  font-size: 62px;
+  background: #8e49e8;
+  padding: 10px;
+  border-radius: 5px;
   cursor: pointer;
 }
 
@@ -46,10 +49,11 @@
   position: absolute;
   right: 0px;
   top: 1px;
-  font-size: 59px;
+  color: white;
+  font-size: 62px;
   background: rgb(0, 187, 255);
   padding: 5px;
-  /* border-radius: 20px; */
+  border-radius: 5px;
   cursor: pointer;
 }
 
@@ -58,9 +62,10 @@
   display: flex;
 }
 .btn__edit {
+  color: white;
   position: absolute;
   right: 52px;
-  top: -9px;
+  top: -10px;
   font-size: 59px;
   background: rgb(0, 187, 255);
   padding: 15px;
@@ -69,24 +74,26 @@
 }
 .btn__del {
   position: absolute;
-  right: -8px;
-  top: -9px;
+  color: white;
+  right: -10px;
+  top: -10px;
   font-size: 59px;
-  background: rgb(255, 0, 60);
+  background: #e74c3c;
   padding: 15px;
-  /* border-radius: 20px; */
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
   cursor: pointer;
 }
 
 .item__all {
   display: flex;
-  min-height: 4.1rem;
+  min-height: 59px;
   justify-content: space-between;
   min-width: 40rem;
   max-width: 40rem;
-  background-color: aliceblue;
+  background-color: #f2f2f2;
   margin-top: 10px;
-  /* border-radius: 10px; */
+  border-radius: 5px;
   padding: 10px;
 }
 .item__box {
@@ -97,7 +104,22 @@
   flex-wrap: wrap;
   max-width: 31rem;
 }
-.small {
-  display: block;
-  width: 90%;
+.text__color {
+  color: red;
+}
+.item__clear {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.clear__btn {
+  color: white;
+  font-size: 22px;
+  background: #8e49e8;
+  padding: 17px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
 }

@@ -1,26 +1,27 @@
 import styles from "@/styles/todo.module.css";
 import { useState } from "react";
-import { CiCirclePlus } from "react-icons/ci";
-import { MdDeleteForever } from "react-icons/md";
-import { FaRegEdit } from "react-icons/fa";
+import { FaPlus } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
+import { MdEdit } from "react-icons/md";
 
 function Todo() {
   const [inputData, setInputData] = useState("");
   const [items, setItems] = useState([]);
   const [isToggleBtn, setIsToggleBtn] = useState(true);
   const [isEditBtn, setIsEditBtn] = useState(null);
+  const [isMsg, setIsMsg] = useState(false);
 
   // add items function
   function addItem() {
-    // e.stopPropagation();
     if (inputData.trim() === "") {
-      alert("Please enter the data first!");
+      setIsMsg(true);
     } else {
       const currentDate = new Date();
       const currentTime = currentDate.toLocaleTimeString();
       const newItem = `${inputData} - ${currentTime}`;
       setItems([...items, newItem]);
       setInputData("");
+      setIsMsg(false);
     }
   }
 
@@ -37,12 +38,14 @@ function Todo() {
     const editItem = items.find((item, ind) => {
       return ind === id;
     });
-    console.log(editItem);
+
     setIsToggleBtn(false);
-    setInputData(editItem);
+    // Extracting the text part of the existing item
+    const textPart = editItem.split("-")[0].trim();
+    setInputData(textPart);
     setIsEditBtn(id);
   }
-
+  // update item function
   function updateItem() {
     const newItems = [...items];
     const currentDate = new Date();
@@ -67,13 +70,11 @@ function Todo() {
       }
     }
   };
-  // const currentDate = new Date();
-  // const currentTime = currentDate.toLocaleTimeString();
 
   return (
     <div className={styles.container}>
       <div className={styles.container__child}>
-        <p className={styles.container__heading}>Todos</p>
+        <p className={styles.container__heading}>Todo App</p>
         <div className={styles.item__add}>
           <textarea
             className={styles.item__input}
@@ -81,17 +82,22 @@ function Todo() {
             value={inputData}
             onChange={(e) => setInputData(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder="Add Items"
+            placeholder="Add Your New Todo"
           />
           {isToggleBtn ? (
-            <CiCirclePlus className={styles.btn__add} onClick={addItem} />
+            <FaPlus className={styles.btn__add} onClick={addItem} />
           ) : (
-            <FaRegEdit
+            <MdEdit
               className={styles.btn__update}
               onClick={() => updateItem()}
             />
           )}
         </div>
+        {isMsg ? (
+          <p className={styles.text__color}>Please Enter Some Text!</p>
+        ) : (
+          ""
+        )}
         <div className={styles.showItem}>
           {items.map((item, ind) => {
             return (
@@ -102,22 +108,25 @@ function Todo() {
                   </div>
 
                   <div className={styles.btn__group}>
-                    <FaRegEdit
+                    <MdEdit
                       className={styles.btn__edit}
                       onClick={() => editItem(ind)}
                     />
-                    <MdDeleteForever
+                    <MdDelete
                       className={styles.btn__del}
                       onClick={() => delItem(ind)}
                     />
                   </div>
                 </div>
-                <div className={styles.item__box}>
-                  {/* <small className={styles.small}>{currentTime}</small> */}
-                </div>
               </>
             );
           })}
+        </div>
+        <div className={styles.item__clear}>
+          <p>You have {items.length} pending tasks</p>
+          <button className={styles.clear__btn} onClick={() => setItems([])}>
+            Clear All
+          </button>
         </div>
       </div>
     </div>
