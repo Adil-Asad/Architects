@@ -1,5 +1,5 @@
 import styles from "@/styles/todo.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaPlus } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { MdEdit } from "react-icons/md";
@@ -10,6 +10,13 @@ function Todo() {
   const [isToggleBtn, setIsToggleBtn] = useState(true);
   const [isEditBtn, setIsEditBtn] = useState(null);
   const [isMsg, setIsMsg] = useState(false);
+
+  useEffect(() => {
+    const storedItems = localStorage.getItem("todoItems");
+    if (storedItems) {
+      setItems(JSON.parse(storedItems));
+    }
+  }, []);
 
   // add items function
   function addItem() {
@@ -22,29 +29,28 @@ function Todo() {
       setItems([newItem, ...items]);
       setInputData("");
       setIsMsg(false);
+      updateLocalStorage([newItem, ...items]);
     }
   }
 
   // delete items function
   function delItem(id) {
-    const updatedItem = items.filter((item, ind) => {
-      return ind !== id;
-    });
+    const updatedItem = items.filter((item, ind) => ind !== id);
     setItems(updatedItem);
+    updateLocalStorage(updatedItem);
   }
 
   // edit items function
   function editItem(id) {
-    const editItem = items.find((item, ind) => {
-      return ind === id;
-    });
+    const editItem = items.find((item, ind) => ind === id);
 
     setIsToggleBtn(false);
-    // Extracting the text part of the existing item
+    // extracting content only
     const textPart = editItem.split("-")[0].trim();
     setInputData(textPart);
     setIsEditBtn(id);
   }
+
   // update item function
   function updateItem() {
     const newItems = [...items];
@@ -54,12 +60,19 @@ function Todo() {
     setItems(newItems);
     setIsToggleBtn(true);
     setInputData("");
+    updateLocalStorage(newItems);
 
     // const newItems = [...items];
     // newItems[isEditBtn] = inputData;
     // setItems(newItems);
     // setIsToggleBtn(true);
     // setInputData("");
+  }
+
+  // todoItems is the name of my local stroage Variables List.
+  //in local stroage data is onl stored in string form.
+  function updateLocalStorage(items) {
+    localStorage.setItem("todoItems", JSON.stringify(items));
   }
 
   //  enter key logic
