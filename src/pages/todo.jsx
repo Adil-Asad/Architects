@@ -14,7 +14,12 @@ function Todo() {
   useEffect(() => {
     const storedItems = localStorage.getItem("todoItems");
     if (storedItems) {
-      setItems(JSON.parse(storedItems));
+      try {
+        setItems(JSON.parse(storedItems));
+      } catch (error) {
+        console.error("Error parsing stored items:", error);
+        // Handle the error or provide a fallback action if parsing fails
+      }
     }
   }, []);
 
@@ -139,7 +144,13 @@ function Todo() {
         </div>
         <div className={styles.item__clear}>
           <p>You have {items.length} pending tasks</p>
-          <button className={styles.clear__btn} onClick={() => setItems([])}>
+          <button
+            className={styles.clear__btn}
+            onClick={() => {
+              localStorage.removeItem("todoItems");
+              setItems([]);
+            }}
+          >
             Clear All
           </button>
         </div>
